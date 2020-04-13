@@ -7,7 +7,7 @@ using namespace std;
 #define mod           1000000007 
 #define ps(x, y)      fixed<<setprecision(y)<<x
 #define testcase(x)   int x; cin >> x; while(x--)
-#define fastIO        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+#define fastIO        ios::sync_with_stdio(0); cin.tie(0); std::cout.tie(0)
 typedef pair<int, int> pii;
 typedef pair<string, string> pss;
 typedef vector<int> vi;
@@ -20,23 +20,32 @@ typedef priority_queue<int> pqi;
 
 int32_t main() {
     fastIO;
-    testcase(t){
+    int x = 1;
+    while(x--){
         int n; int k;
         cin >> n >> k;
-        stack < pii > queue;
+        int que_chefs[n];
+        /* for each index i, we try to find the first index j where (j>i) and arr[j]<arr[i]
+        if no such j exist, ignore that i*/
+        for (int i = 0; i < n; i++) cin >> que_chefs[i];
         int ans = 1;
-        int x;
-        for (int i = 1; i <= n; i++)
+        stack < pii > st;
+        for (int i = 0; i < n; i++)
         {
-            cin >> x;
-            while ( !queue.empty() && queue.top().first > x){
-                auto y = q.top();
-                q.pop();
-                
-            }
+            /* code */
+            while (!st.empty() && st.top().first > que_chefs[i])
+            {
+                /* code */
+                pii element = st.top();
+                int fearfullness = i - element.second + 1;
+                ans *= fearfullness;
+                ans = ans%mod;
+                st.pop();
+            }   
+            st.push(make_pair(que_chefs[i], i));
         }
+        std::cout << ans << "\n";
         
-
     }
     return 0;
 }
