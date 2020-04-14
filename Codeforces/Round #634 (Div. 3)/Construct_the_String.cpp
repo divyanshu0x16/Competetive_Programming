@@ -12,8 +12,6 @@ using namespace __gnu_pbds;
 #define testcase(x)   int x; cin >> x; while(x--)
 #define fastIO        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
 #define ordered_set   tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
-#define present(container, element) (container.find(element) != container.end())
-#define cpresent(container, element) (find(all(container),element) != container.end())
 typedef pair<int, int> pii;
 typedef pair<string, string> pss;
 typedef vector<int> vi;
@@ -23,15 +21,18 @@ typedef stack<int> si;
 typedef queue<int> qi;
 typedef priority_queue<int> pqi;
 
-//use this. Avoid copying of vector
-void some_function(vector < int >& v){
-
-}
 
 int32_t main() {
-	int i = 1;
-	i /= 2;
-	cout << i << "\n";
-	return 0;
+    fastIO;
+    testcase(t){
+        int n; int a; int b;
+        cin >> n >> a >> b;
+        for (int i = 0; i < n; i++)
+        {
+            cout << char('a'+i%b);
+        }
+        cout << "\n";
+    }
+    return 0;
 }
  
