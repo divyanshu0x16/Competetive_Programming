@@ -21,16 +21,22 @@ typedef stack<int> si;
 typedef queue<int> qi;
 typedef priority_queue<int> pqi;
 
-
 int32_t main() {
-	fastIO;
-	int t = 1;
-	while(t--){
-		string str;
-		cin >> str;
-		str[0] = toupper(str[0]);
-		cout << str << "\n";
-	}
-	return 0;
+    fastIO;
+    testcase(t){
+        int x, n, m; cin >> x >> n >> m;
+        while ( x > 20 && n > 0){
+            x = x/2 + 10;
+            n--;
+        }
+        while ( m > 0 && x > 0)
+        {
+            x = x - 10;
+            m--;
+        }
+        if ( x > 0 ) cout << "NO\n";
+        else cout << "YES\n";
+    }
+    return 0;
 }
  
