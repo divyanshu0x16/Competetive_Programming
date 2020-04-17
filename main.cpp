@@ -24,12 +24,8 @@ typedef priority_queue<int> pqi;
 
 int32_t main() {
 	fastIO;
-	int t = 1;
-	while(t--){
-		string str;
-		cin >> str;
-		str[0] = toupper(str[0]);
-		cout << str << "\n";
+	testcase(t){
+		
 	}
 	return 0;
 }
