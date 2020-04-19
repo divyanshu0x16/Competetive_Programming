@@ -8,6 +8,7 @@ using namespace __gnu_pbds;
 #define setbits(x)    __builtin_popcountll(x)
 #define zerobits(x)   __builtin_ctzll(x)
 #define mod           1000000007 
+#define modulo(a, b) (a%b<0 ? a%b+b : a%b)
 #define ps(x, y)      fixed<<setprecision(y)<<x
 #define testcase(x)   int x; cin >> x; while(x--)
 #define fastIO        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
