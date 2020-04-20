@@ -26,8 +26,38 @@ typedef priority_queue<int> pqi;
 
 int32_t main() {
 	fastIO;
-	testcase(t){
-		
+	int t = 1; 
+	while(t--){
+		int n, p; cin >> n >> p;
+		n = min(n, p);
+		vector < int > a(n);
+		for (int i = 0; i < n; i++)
+		{
+			cin >> a[i];
+			a[i] %= p;
+		}
+		vector < int > parent(p, -1), newParent(p, -1);
+		for (int t = 0; t < n && parent[0] == -1; t++)
+		{
+			int v = a[t];
+			copy(all(parent), newParent.begin());
+			if(newParent[v] == -1){
+				newParent[v] = t;
+			}
+			for (int i = 0; i < p; i++)
+			{
+				if (parent[i] != -1 && parent[(i+v)%p] == -1)
+				{
+					newParent[(i+v)%p] = t;
+				}	
+			}
+			copy(all(newParent), parent.begin());
+		}
+		if( parent[0] == -1){
+			puts("NO");
+		}else{
+			puts("YES");
+		}
 	}
 	return 0;
 }
