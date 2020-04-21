@@ -4,7 +4,7 @@
 using namespace std;
 using namespace __gnu_pbds;
 /* Solution by divyanshu0x16*/
-#define int           unsigned long long int
+#define int           long long 
 #define setbits(x)    __builtin_popcountll(x)
 #define zerobits(x)   __builtin_ctzll(x)
 #define mod           1000000007 
@@ -23,19 +23,34 @@ typedef stack<int> si;
 typedef queue<int> qi;
 typedef priority_queue<int> pqi;
 
+int fast_exponentiation(int a, int b){
+	if ( b==0 ) return 1;
+	if ( b%2==0 ){
+		int c = fast_exponentiation(a, b/2);
+		return (c*c)%mod;
+	}
+	return (a*fast_exponentiation(a, b-1))%mod;
+}
 
 int32_t main() {
-    fastIO;
-    testcase(t){
-        int n, a; cin >> n >> a;
-        int ans = 0, allPower = 1;
-        for (int i = 1; i <= 2*n-1; i = i+2)
-        {
-            ans += ((int)(pow(a, i*allPower) + 0.5));
-            allPower += i*allPower; 
-        }
-        cout << ans%mod << "\n";
-    }
-    return 0;
+	fastIO;
+	testcase(t){
+		int n, a; 
+		cin >> n >> a;
+		int num = 1;
+		int sum = 0;
+		int p = 1;
+		for (int i = 0; i < n; i++)
+		{
+			int pp = fast_exponentiation((a*p)%mod, num);
+			num += 2;
+			p *= pp;
+			p %= mod;
+			sum += pp;
+			sum %= mod;
+		}
+		cout << sum << "\n";
+	}
+	return 0;
 }
  
