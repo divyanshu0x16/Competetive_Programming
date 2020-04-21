@@ -22,12 +22,52 @@ typedef vector<pii> vii;
 typedef stack<int> si;
 typedef queue<int> qi;
 typedef priority_queue<int> pqi;
-
+/*1. Find initial K and L
+2. Find gaps, add them to a vector, and sort them
+3. Iterate through and find updated values of K and L
+and take the minimu
+*/
 
 int32_t main() {
     fastIO;
     testcase(t){
-        
+        string a, b;
+        cin >> a >> b;
+        int n = a.size();
+
+        // Steps 1 and 2
+        int L = 0, K = 0;
+        int gapLength = 0;
+        vi gaps;
+        bool canDoGaps = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            if(a[i]==b[i]){
+                if(canDoGaps) gapLength++;
+            }
+            else{
+                if(!canDoGaps)K++;
+                L++;
+                canDoGaps = true;
+                if( gapLength > 0){
+                    K++;
+                    gaps.push_back(gapLength);
+                    gapLength = 0;
+                }
+            }
+        }
+
+        sort(all(gaps));
+        //Step 3: Iterate through the vector and update K and L
+        int ans = L*K;
+        for (auto gapLength : gaps)
+        {
+            K--;
+            L+= gapLength;
+            ans = min(ans, L*K);
+        }
+        cout << ans << "\n";
     }
     return 0;
 }
