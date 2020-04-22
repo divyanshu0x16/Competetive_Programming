@@ -43,8 +43,8 @@ int32_t main() {
         for (int i = 0; i < n/2; ++i)
         {
             // We do range with require one operations
-            int leftOfRange = 1 + givenArray[i], leftOfRange2 = k + givenArray[i];
-            int rightOfRange = 1 + givenArray[n-i-1], rightOfRange2 = k + givenArray[n-i-1];
+            int leftOfRange = 1 + givenArray[i], rightOfRange = k + givenArray[i];
+            int leftOfRange2 = 1 + givenArray[n-i-1], rightOfRange2 = k + givenArray[n-i-1];
             // We are creating a range here, so max of left should always be less than equal to min of right
             assert(max(leftOfRange, leftOfRange2) <= min(rightOfRange, rightOfRange2));
             //Prefix Sum for calculating one operation in O(1) time
