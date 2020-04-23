@@ -28,8 +28,7 @@ typedef priority_queue<int> pqi;
 int32_t main() {
     fastIO;
     testcase(t){
-        
-        cout << "I fucking did it" << endl;
+        cout << "YES" << "\n";
     }
     return 0;
 }
