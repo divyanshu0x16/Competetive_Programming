@@ -29,7 +29,7 @@ int32_t main() {
 	testcase(t){
 		int ans = 227 + (228-227)/2;
 		cout << ans ;
-
+		
 	}
 	return 0;
 }
