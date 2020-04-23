@@ -9,6 +9,7 @@ using namespace __gnu_pbds;
 #define zerobits(x)   __builtin_ctzll(x)
 #define mod           1000000007 
 #define modulo(a, b)  (a%b<0 ? a%b+b : a%b)
+#define intpow(a,b)   (int)(pow(a,b) + 0.5)
 #define all(x)        (x).begin(), (x).end()
 #define ps(x, y)      fixed<<setprecision(y)<<x
 #define testcase(x)   int x; cin >> x; while(x--)
@@ -25,11 +26,11 @@ typedef priority_queue<int> pqi;
 
 
 int32_t main() {
-	fastIO;
-	testcase(t){
-		int ans = 227 + (228-227)/2;
-		cout << ans << "\n" ;
-	}
-	return 0;
+    fastIO;
+    testcase(t){
+        
+        cout << "I fucking did it" << endl;
+    }
+    return 0;
 }
  
