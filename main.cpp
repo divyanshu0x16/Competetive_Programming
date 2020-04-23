@@ -28,8 +28,7 @@ int32_t main() {
 	fastIO;
 	testcase(t){
 		int ans = 227 + (228-227)/2;
-		cout << ans ;
-		
+		cout << ans << "\n" ;
 	}
 	return 0;
 }
