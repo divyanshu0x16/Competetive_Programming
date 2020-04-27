@@ -10,6 +10,7 @@ using namespace __gnu_pbds;
 #define mod           1000000007 
 #define modulo(a, b)  (a%b<0 ? a%b+b : a%b)
 #define intpow(a,b)   (int)(pow(a,b) + 0.5)
+#define gcd(a,b)      __gcd(a, b)
 #define all(x)        (x).begin(), (x).end()
 #define ps(x, y)      fixed<<setprecision(y)<<x
 #define testcase(x)   int x; cin >> x; while(x--)
@@ -26,10 +27,10 @@ typedef priority_queue<int> pqi;
 
 
 int32_t main() {
-    fastIO;
-    testcase(t){
-        cout << "YES" << "\n";
-    }
-    return 0;
+	fastIO;
+	testcase(t){
+		
+	}
+	return 0;
 }
  
