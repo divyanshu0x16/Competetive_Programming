@@ -24,7 +24,7 @@ void topological_sort(){
         if(!visited[i])
             dfs(i);
     }
-    reverse(ans.begin(),ans.end());
+    reverse(ans.begin(),ans.end()); 
 }
 
 

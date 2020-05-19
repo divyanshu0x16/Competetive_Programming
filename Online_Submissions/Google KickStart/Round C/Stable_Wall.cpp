@@ -25,11 +25,56 @@ typedef stack<int> si;
 typedef queue<int> qi;
 typedef priority_queue<int> pqi;
 
+string ans;
+vi adj[26];
+bool vis[26], act[26];
+bool bad;
+
+void dfs(int u){
+    act[u] = 1;
+    vis[u] = 1;
+    for(int v: adj[u]){
+        if(act[v]&&v^u)
+            bad=1;
+        else{
+            if(!vis[v])
+                dfs(v);
+        }
+    }
+    act[u]=0;
+    ans += (char)(u+'A');
+}
 
 int32_t main() {
     fastIO;
+    int w = 1;
     testcase(t){
-        
+        int r, c; cin >> r >> c;
+        set<char> allCharactersAppear;
+        string wall[r*c];
+        for (int i = 0; i < r; i++)
+        {
+            cin >> wall[i];
+            for(char c: wall[i])
+                allCharactersAppear.insert(c);
+            if(i){
+                for(int j=0; j<c; ++j)
+                    adj[wall[i-1][j]-'A'].push_back(wall[i][j]-'A');
+            }   
+        }
+        memset(vis, 0, 26);
+        memset(act, 0, 26);
+        ans = "";
+        bad = 0;
+        for(char c: allCharactersAppear)
+            if(!vis[c-'A'])
+                dfs(c-'A');
+        if(bad)
+            ans="-1";
+        for (int i = 0; i < 26; i++)
+            adj[i].clear();
+        cout << "Case #" << w << ": " << ans << "\n";
+        w++;
     }
     return 0;
 }
