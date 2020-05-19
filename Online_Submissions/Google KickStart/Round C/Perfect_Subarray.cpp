@@ -25,39 +25,34 @@ typedef stack<int> si;
 typedef queue<int> qi;
 typedef priority_queue<int> pqi;
 
-bool isPerfectSquare(int x) 
-{   
-  long double sr = sqrt(x); 
-  return ((sr - floor(sr)) == 0); 
-} 
-  
+
 int32_t main() {
-    fastIO;
-    int w = 1;
-    testcase(t){
-        int ans = 0, n; cin >> n;
-        int prefixSum[n+1];
-        int running_total = 0;
-        prefixSum[0] = 0;
-        for (int index = 1; index <= n; index++)
-        {
-            int element; cin >> element;
-            running_total += element;
-            prefixSum[index] = running_total;
-        }
-        for (int prev = 0; prev < n; prev++)
-        {
-            for (int index = prev+1; index <= n; index++)
-            {
-                int current_sum = prefixSum[index]-prefixSum[prev];
-                if (isPerfectSquare(current_sum)){
-                    ans++;
-                }
-            }
-        }
-        cout << "Case #" << w << ": " << ans << "\n";
-        w++;
-    }
-    return 0;
+	fastIO;
+	int w = 1;
+	testcase(t){
+		int n; cin >> n;
+		vi a(n);
+		int sum = 0;
+		for (int i = 0; i < n; i++)
+		{
+			cin >> a[i];
+			sum += abs(a[i]);
+		}
+		vi cnt(2*sum+1);
+		cnt[sum]++;
+		int pref = 0;
+		int answer = 0;
+		for (int i = 0; i < n; i++)
+		{
+			pref += a[i];
+			for (int j = 0; j*j <= sum+pref; j++){
+				answer += cnt[sum+pref-j*j];			
+			}
+			cnt[sum+pref]++;
+		}
+		cout << "Case #" << w << ": " << answer << "\n";
+		w++;
+	}
+	return 0;
 }
  
