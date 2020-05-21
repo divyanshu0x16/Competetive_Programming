@@ -29,7 +29,6 @@ typedef priority_queue<int> pqi;
 int32_t main() {
 	fastIO;
 	testcase(t){
-		
 	}
 	return 0;
 }
