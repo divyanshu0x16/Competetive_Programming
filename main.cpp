@@ -1,36 +1,33 @@
-#include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp> 
+#include<iostream>
+#include<algorithm>
 using namespace std;
-using namespace __gnu_pbds;
-/* Solution by divyanshu0x16*/
-#define int           long long 
-#define setbits(x)    __builtin_popcountll(x)
-#define zerobits(x)   __builtin_ctzll(x)
-#define mod           1000000007 
-#define modulo(a, b)  (a%b<0 ? a%b+b : a%b)
-#define intpow(a,b)   (int)(pow(a,b) + 0.5)
-#define gcd(a,b)      __gcd(a, b)
-#define all(x)        (x).begin(), (x).end()
-#define ps(x, y)      fixed<<setprecision(y)<<x
-#define testcase(x)   int x; cin >> x; while(x--)
-#define fastIO        ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
-#define ordered_set   tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
-typedef pair<int, int> pii;
-typedef pair<string, string> pss;
-typedef vector<int> vi;
-typedef vector<vi> vvi;
-typedef vector<pii> vii;
-typedef stack<int> si;
-typedef queue<int> qi;
-typedef priority_queue<int> pqi;
 
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int k=0; k<n; k++){
+        cin>>arr[k];
+    }
+    sort(arr,arr+n);
+    int score=0;
+    int i=0;
+    int max;
+    int min=arr[0];
+	cout << arr[n] ;
+    while (arr[n-1]-arr[i]>4){
+        min=arr[i];
+        for(int j=i+1; j<n; j++ ){
+            max=arr[j];
+            if(max-min>4){
+                score+=1;
+                i=j;
+                break;
+            }
+        }
+    }
 
-int32_t main() {
-	fastIO;
-	testcase(t){
-		
-	}
-	return 0;
+    cout<<score+1;
+    
+
 }
- 
