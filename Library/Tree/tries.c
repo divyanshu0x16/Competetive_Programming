@@ -7,9 +7,11 @@
 // a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
 int number_of_nodes = 0;
 
+
+//the function returns 0 for a, 1 for b etc.
 int charindex(char c){
   return (int)c - 97;
-}
+}//for b natural index is 98..
 
 struct Node{
   struct Node *children[ALPHABETSIZE];
@@ -52,19 +54,23 @@ struct Node *insert(struct Node *root, char *word){
       int j = charindex(word[i]);
       // i = 0 -> j = 2; i = 1 -> 4; i = 2 -> j = 0; i = 3 -> 17
       
+      //If the root has a populated b child
       if(curr->children[j]){
+        //If the child exists, just go to that child
         curr = curr->children[j];
         // printf("%c exists already, moving along\n",word[i]);
       }
       else{
         struct Node *p = newNode(word[i]);
+        //we need to attach it to the tree
         curr->children[j] = p;
         p->parent = curr;
         // printf("%c does not exist, creating a new node \n",word[i]);
+        //Once the new child is created, the pointer should be moved to eat
         curr = curr->children[j];
       }
   }
-
+  //Now the new child is the end
   curr->isend = true;
   // printf("\n----\n\n"); 
   return root;
