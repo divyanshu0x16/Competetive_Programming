@@ -84,6 +84,13 @@ int getBalance(struct Node *N)
 
 struct Node* leftRotate(struct Node *z, struct Node *zp){
 
+  /*  Initial tree 
+             z  
+          T4    y
+            T3      x
+                 T1    T2
+  */
+
   struct Node *y = z->right;
   struct Node *T3 = y->left; 
 
@@ -92,6 +99,11 @@ struct Node* leftRotate(struct Node *z, struct Node *zp){
   if(T3 != NULL)
     T3->parent = z;
 
+  /*    New Tree
+            y
+         z       x   
+       T4  T3  T1   T2                
+  */
   y->parent = zp;
   z->parent = y;
 
@@ -103,9 +115,20 @@ struct Node* leftRotate(struct Node *z, struct Node *zp){
 
 
 struct Node* rightRotate(struct Node *z, struct Node *zp){
+            /*z
+            y    T4
+         x    T3
+       T1 T2  */
+ 
+  struct Node *y = z->left; // y is the left child of z
+  struct Node *T3 = y->right; //the tree that is getting affected
 
-  struct Node *y = z->left;
-  struct Node *T3 = y->right; 
+  /*  New Tree
+                y
+            x       z
+        t1  t2    t3  t4  
+  
+  */
 
   y->right = z;
   z->left = T3;
@@ -119,6 +142,7 @@ struct Node* rightRotate(struct Node *z, struct Node *zp){
   z->height = 1 + max(height(z->left),height(z->right)); 
   y->height = 1 + max(height(y->left),height(y->right)); 
 
+  //The new root that we return is  
   return y;  
 }
   
@@ -146,6 +170,7 @@ struct Node* insert(struct Node* node, int key, struct Node* parent_node){
 
   int balance = getBalance(node);
 
+  //Balance is greater than one, so we are dealing with the left side
   if(balance > 1){
     if(key < node->left->key){
       // we need a right rotation (LL case)
@@ -160,6 +185,7 @@ struct Node* insert(struct Node* node, int key, struct Node* parent_node){
     }
   }
   
+  //It is right heavy. 
   if(balance < -1){
     if(key > node->right->key){
       // we need a left rotation (RR case)
