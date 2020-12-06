@@ -185,39 +185,13 @@ int main()
 { 
   struct Node *root = NULL; 
   
-  int n;
-  scanf("%d",&n);
-  int arr[n];
-  int count=0;
-  int k=0;
-  int i=2;
-  while(k<n){
-      for(int j=1;j<i;j++){
-        if(i%j==0){
-            count+=1;
-        } 
-      }
-      if(count==1){
-          arr[k]=i;
-          k+=1;
-          
-      }
-      i+=1;
-      count=0;
-  }
-  
-  
-  
-  for(int i=0;i<n;i++){
-      root = insert(root,arr[i],NULL);
-  }
   /* Constructing tree given in the above figure */
-  //root = insert(root, 15, NULL);
- // root = insert(root, 6, NULL);
- // root = insert(root, 23, NULL);
- // root = insert(root, 4, NULL);
- // root = insert(root, 7, NULL);
- // root = insert(root, 8, NULL);
+  root = insert(root, 15, NULL);
+  root = insert(root, 6, NULL);
+  root = insert(root, 23, NULL);
+  root = insert(root, 4, NULL);
+  root = insert(root, 7, NULL);
+  root = insert(root, 8, NULL);
   
   /*
   input to check LL: 15, 6, 23, 4, 7, 5
@@ -228,9 +202,9 @@ int main()
   Thanks to Dhaiwat Kabaria for the suggestion! 
   */
 
- // printf("Inorder\n");
-  //inOrder(root); 
+  printf("Inorder\n");
+  inOrder(root); 
   printf("\n\nPreorder\n");
   preOrder(root); 
   return 0; 
-}
+} 
