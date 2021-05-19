@@ -5,8 +5,6 @@
 !.vscode/extensions.json
 *.code-workspace
 **/.vscode/
-ES242/
-ES301/
 Library/moss.pl
 
 # Local History for Visual Studio Code
