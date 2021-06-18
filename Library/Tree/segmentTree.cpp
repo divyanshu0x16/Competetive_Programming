@@ -55,7 +55,7 @@ public:
 
 private: 
 
-    vector<int> buildTree( vector<int>& nums){
+    void buildTree( vector<int>& nums){
         for(int i = n, j = 0; i < 2*n; i++, j++)
                 tree[i] = nums[j];
 
