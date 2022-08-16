@@ -77,6 +77,15 @@ private:
 };
 
 int32_t main() {
+    int n = 10;
+    while (n > 1)
+        {
+            for (int i = 0; i < n/2; i++)
+            {
+                cout << i << " " << n-i-1 << "\n";
+            }
+            n = (n+1)/2;
+        }
     return 0;
 }
  
